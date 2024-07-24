@@ -1,0 +1,10 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: 
+  pull_request
+jobs:
+  every_time:
+    name: Every time
+  not_every_time:
+    if: $ {{ ! github.event.pull_request.draft }}
+    name: Only ready for review

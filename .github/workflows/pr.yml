@@ -2,6 +2,8 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: 
   pull_request
+permissions:
+  pull-requests: write
 jobs:
   every_time:
     name: Every time

@@ -9,10 +9,7 @@ jobs:
     name: Every time
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr comment $PR_URL --body "Every time!"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_URL: ${{ github.event.pull_request.html_url }}
+      - run: echo Kek
   not_every_time:
     name: Only ready for review
     runs-on: ubuntu-latest
@@ -21,7 +18,7 @@ jobs:
         id: isdraft
         run: |
           if [[ ${{ github.event.pull_request.draft }} == true ]]; then
-            echo "::set-output name=stop::true"
+            echo stop=true >> $GITHUB_OUTPUT
           fi
       - if: steps.isdraft.output.stop == 'true'
         run: gh pr comment $PR_URL --body "Only ready for review!"

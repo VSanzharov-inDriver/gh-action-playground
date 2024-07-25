@@ -20,7 +20,7 @@ jobs:
       - name: Check is draft
         id: isdraft
         run: |
-          if [ ${{ github.event.pull_request.draft }} == true ] then
+          if [[ ${{ github.event.pull_request.draft }} == true ]]; then
             echo "::set-output name=stop::true"
           fi
       - if: steps.isdraft.output.stop == 'true'

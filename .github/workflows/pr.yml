@@ -20,10 +20,8 @@ jobs:
       - name: Check is draft
         id: isdraft
         run: |
-          if [ ${{ github.event.pull_request.draft }} == "true" ] then
+          if [ ${{ github.event.pull_request.draft }} == true ] then
             echo "::set-output name=stop::true"
-          else
-            echo "::set-output name=stop::false"
           fi
       - if: steps.isdraft.output.stop == 'true'
         run: gh pr comment $PR_URL --body "Only ready for review!"
